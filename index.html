@@ -177,6 +177,15 @@ margin-bottom:10px;
 font-weight:bold;
 color:#555;
 }
+
+ .review-slide{
+display:none;
+}
+
+.review-slide.active{
+display:block;
+}
+ 
 </style>
 
 </head>
@@ -343,16 +352,34 @@ document.getElementById("slide").src = images[i];
 
 <div class="review-container">
 
+<div class="review-slide active">
 <div class="review-text">
 ⭐⭐⭐⭐⭐ Best electrical shop in Bamhori. Good service and price.
 </div>
-
 <div class="review-name">
 – Local Customer
 </div>
+</div>
+
+<div class="review-slide">
+<div class="review-text">
+⭐⭐⭐⭐⭐ Very good quality electrical items.
+</div>
+<div class="review-name">
+– Happy Customer
+</div>
+</div>
+
+<div class="review-slide">
+<div class="review-text">
+⭐⭐⭐⭐⭐ Best price and friendly service.
+</div>
+<div class="review-name">
+– Regular Customer
+</div>
+</div>
 
 </div>
- 
 </section>
 
 <footer>
@@ -393,8 +420,28 @@ Chat on WhatsApp
 style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:50%;text-decoration:none;font-size:20px;">
 💬
 </a>
+<script>
 
-</body>
+let slides = document.querySelectorAll(".review-slide");
+let index = 0;
+
+function showReviews(){
+slides.forEach((slide)=>{
+slide.classList.remove("active");
+});
+
+index++;
+
+if(index >= slides.length){
+index = 0;
+}
+
+slides[index].classList.add("active");
+}
+
+setInterval(showReviews,3000);
+
+</script>
 </body>
 
 </html>
